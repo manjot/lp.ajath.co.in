@@ -167,24 +167,25 @@
 <div class="glass-card rounded-xl p-8 shadow-xl">
 <h3 class="font-headline-md text-headline-md mb-2 text-on-background">Free Consultation</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">Schedule a call with our Delhi NCR tech leads.</p>
-<form class="space-y-4">
+<form id="consultation-form" class="space-y-4">
 <div>
 <label class="block font-label-sm text-label-sm mb-1 text-on-surface">Full Name</label>
-<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="e.g. Rahul Sharma" type="text"/>
+<input name="name" required class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="e.g. Rahul Sharma" type="text"/>
 </div>
 <div>
 <label class="block font-label-sm text-label-sm mb-1 text-on-surface">Business Email</label>
-<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="rahul@company.in" type="email"/>
+<input name="email" required class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="rahul@company.in" type="email"/>
 </div>
 <div>
 <label class="block font-label-sm text-label-sm mb-1 text-on-surface">Budget Range (INR)</label>
-<select class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all">
-<option>₹3L - ₹10L</option>
-<option>₹10L - ₹50L</option>
-<option>₹50L+</option>
+<select name="budget" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all">
+<option value="₹3L - ₹10L">₹3L - ₹10L</option>
+<option value="₹10L - ₹50L">₹10L - ₹50L</option>
+<option value="₹50L+">₹50L+</option>
 </select>
 </div>
-<button class="w-full py-4 primary-gradient text-on-primary rounded-lg font-bold hover:shadow-2xl transition-all active:scale-[0.98]" type="submit">Claim My Free Strategy Session</button>
+<div id="form-message" class="hidden text-sm p-3 rounded-lg font-semibold text-center transition-all duration-300"></div>
+<button id="submit-btn" class="w-full py-4 primary-gradient text-on-primary rounded-lg font-bold hover:shadow-2xl transition-all active:scale-[0.98]" type="submit">Claim My Free Strategy Session</button>
 </form>
 </div>
 <!-- Decorative background glow -->
@@ -474,6 +475,55 @@
                 header.classList.remove('py-2', 'shadow-md');
             }
         });
+
+        // AJAX Form Submission for SMTP mailer
+        const form = document.getElementById('consultation-form');
+        const formMessage = document.getElementById('form-message');
+        const submitBtn = document.getElementById('submit-btn');
+
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Reset message state
+                formMessage.classList.add('hidden');
+                formMessage.classList.remove('bg-green-500/10', 'text-green-600', 'border-green-500/20', 'bg-red-500/10', 'text-red-600', 'border-red-500/20');
+                formMessage.innerText = '';
+                
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                const originalBtnText = submitBtn.innerText;
+                submitBtn.innerText = 'Sending Request...';
+                
+                const formData = new FormData(form);
+                
+                try {
+                    const response = await fetch('send_mail.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    formMessage.classList.remove('hidden');
+                    if (result.success) {
+                        formMessage.classList.add('bg-green-500/10', 'text-green-600', 'border', 'border-green-500/20');
+                        formMessage.innerText = result.message;
+                        form.reset();
+                    } else {
+                        formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
+                        formMessage.innerText = result.message || 'An error occurred. Please try again.';
+                    }
+                } catch (error) {
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
+                    formMessage.innerText = 'Unable to connect to the server. Please check your connection.';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = originalBtnText;
+                }
+            });
+        }
     </script>
 </body></html>
 
