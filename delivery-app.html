@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Delivery App Development | Case Study | Ajath Infotech</title>
+    
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2" />
+    <link rel="icon" type="image/png" href="favicon.png?v=2" />
+    <link rel="apple-touch-icon" href="favicon.png?v=2" />
+    
+    <meta name="description" content="Read the case study of Ajath Infotech's custom Delivery App, an on-demand parcel and food delivery solution with real-time map tracking." />
+    <meta name="keywords" content="delivery app development, parcel delivery app, food delivery app, delivery tracking app, Ajath case study, iOS delivery app, android delivery app" />
+    <meta name="author" content="Ajath Infotech Pvt Ltd" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="http://lp.ajath.co.in/delivery-app.html" />
+    
+    <!-- Open Graph (OG) Tags for Social Sharing -->
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Delivery App Case Study | Ajath Infotech" />
+    <meta property="og:description" content="Discover how Ajath Infotech engineered a modern logistics, food, and parcel delivery app featuring dynamic batch routing and live map tracking." />
+    <meta property="og:url" content="http://lp.ajath.co.in/delivery-app.html" />
+    <meta property="og:image" content="logo-black.png" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #A855F7 0%, #4F46E5 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #3525cd 0%, #6b00b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo-light { display: inline-block !important; }
+        .logo-dark { display: none !important; }
+        .dark .logo-light { display: none !important; }
+        .dark .logo-dark { display: inline-block !important; }
+    </style>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary-fixed": "#f0dbff",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed": "#e2dfff",
+                        "on-background": "#0b1c30",
+                        "surface-container": "#e5eeff",
+                        "on-error": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "background": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#dae2fd",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#4f46e5",
+                        "outline": "#777587",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#6b00b7",
+                        "secondary-fixed": "#dae2fd",
+                        "on-tertiary-fixed": "#2c0051",
+                        "primary": "#3525cd",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "on-secondary-container": "#5c647a",
+                        "secondary": "#565e74",
+                        "on-primary-fixed": "#0f0069",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary-container": "#dad7ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-container": "#ebd2ff",
+                        "tertiary-container": "#862dd4",
+                        "on-surface-variant": "#464555",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface-tint": "#4d44e3",
+                        "inverse-surface": "#213145"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "section-padding": "120px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["30px", {"lineHeight": "38px", "fontWeight": "600"}],
+                        "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "label-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-surface-container/80 shadow-sm transition-all duration-300">
+        <nav class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <img class="logo-light w-auto h-10 object-contain" src="logo-black.png" alt="Ajath Infotech Logo" />
+                </a>
+            </div>
+            <div>
+                <a class="text-primary font-bold flex items-center gap-1 hover:gap-3 transition-all" href="index.html#portfolio">
+                    <span class="material-symbols-outlined">arrow_back</span> Back to Showcase
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Showcase Hero -->
+    <section class="relative pt-32 pb-20 overflow-hidden bg-surface-container-low border-b border-slate-100">
+        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full text-primary font-label-sm text-label-sm mb-6">
+                    <span class="material-symbols-outlined text-[18px]">local_shipping</span>
+                    CASE STUDY: DELIVERY APP
+                </div>
+                <h1 class="font-display-xl text-headline-lg lg:text-display-xl text-on-background mb-6 leading-tight">
+                    On-Demand <span class="text-gradient">Logistics & Parcel</span> Delivery App
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                    We designed a highly efficient parcel and food logistics application featuring live map tracking, automated multi-stop driver batching, and custom geo-fenced operations.
+                </p>
+                <div class="flex items-center gap-6">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="text-2xl font-bold text-primary">50 Days</div>
+                        <div class="text-xs text-on-surface-variant/60">Launch Time</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="text-2xl font-bold text-primary">30 min</div>
+                        <div class="text-xs text-on-surface-variant/60">Avg Delivery</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="text-2xl font-bold text-primary">Real-time</div>
+                        <div class="text-xs text-on-surface-variant/60">Map Tracking</div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8eS4F4tR9RtNu5wWaBCAaYVwcriHD-irQOWWR6I8gd39GIp4CIIslWFqYnVMPEg8AAO4TPntpxTKaO_ncqKSXG38_NWoXWU5EL6R6zQNSMaBwuRwVe9EK_Fxo_AabvmX8Yb1aWsp-OnM4K72pIlYxKCKVhERTK7KAWmvnEjmeP42Xs_ruocUUI8o-t4GegezGk9oP-AGrgP7acnmXWx1ua_99XJIoaXPCJDF5pHe8z50ScJzQzBAo803S1zEop0Qe5SEfgd-C7tvP" alt="Delivery App Case Study" />
+            </div>
+        </div>
+    </section>
+
+    <!-- App Details -->
+    <section class="py-20 bg-background">
+        <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-2 space-y-8">
+                <div>
+                    <h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Project Overview & Challenge</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        A regional hyper-local delivery service operating in Gurgaon required a stable, cross-platform logistics system to manage high-frequency food and parcel dispatches, optimize courier routes, and decrease delivery delays.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-headline-md text-headline-md text-on-background mb-4">Our Premium Solution</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span><strong>Live Dispatch Systems:</strong> Fully responsive logistics console enabling automated courier job assignment.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span><strong>Dynamic Multi-Stop Batching:</strong> Smart logic bundling packages heading in similar directions to save time.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="material-symbols-outlined text-primary">check_circle</span>
+                            <span><strong>Interactive SMS & WhatsApp:</strong> Direct triggers notifying customers when agents enter custom geo-fences.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 rounded-2xl border border-slate-100 flex flex-col justify-between">
+                <div>
+                    <h4 class="font-headline-md text-headline-md text-on-background mb-6">Technical Stack</h4>
+                    <ul class="space-y-4 text-sm text-on-surface-variant mb-8">
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Frontend</span>
+                            <span class="font-semibold text-primary">React Native / Expo</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Backend</span>
+                            <span class="font-semibold text-primary">Node.js (Koa) / GraphQL</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Map Tracking</span>
+                            <span class="font-semibold text-primary">Mapbox SDK / OpenStreetMap</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Cloud</span>
+                            <span class="font-semibold text-primary">AWS EC2 / DynamoDB</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <a class="w-full py-3 bg-primary hover:bg-primary-container text-white text-center font-bold rounded-full transition-all block shadow-md shadow-primary/10" href="index.html#contact">
+                    Inquire About This App
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-gradient-to-b from-[#0F0C20] to-[#1A103C] text-slate-300 border-t border-slate-800">
+        <div class="max-w-container-max mx-auto px-gutter text-center">
+            <p class="text-sm text-slate-400 mb-6">&copy; 2026 Ajath Infotech Pvt Ltd. All Rights Reserved.</p>
+            <div class="flex justify-center gap-6 text-xs">
+                <a class="hover:text-white transition-colors" href="index.html">Home</a>
+                <span>&middot;</span>
+                <a class="hover:text-white transition-colors" href="tel:+917838518049">+91 78385 18049</a>
+                <span>&middot;</span>
+                <a class="hover:text-white transition-colors" href="mailto:info@ajath.co.in">info@ajath.co.in</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating CTA -->
+    <a class="fixed bottom-8 left-8 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 group" href="https://wa.me/917838518049?text=Hello%20Ajath%20Infotech%2C%20I%20would%20like%20to%20inquire%20about%20your%20Delivery%20App%20solutions." target="_blank" rel="noopener noreferrer">
+        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.528 2.017 14.07 1.012 11.9 1.012c-5.437 0-9.862 4.372-9.866 9.8.001 1.762.477 3.484 1.379 5.017l-.986 3.6 3.69-.968zm11.566-6.12c-.227-.113-1.343-.662-1.55-.737-.207-.075-.358-.112-.51.113-.15.225-.583.738-.713.888-.13.152-.26.17-.488.058-.228-.113-.96-.353-1.83-1.13-.675-.6-1.13-1.342-1.263-1.57-.13-.225-.013-.348.1-.462.103-.102.228-.266.343-.4.114-.132.152-.224.228-.374.076-.15.038-.282-.018-.395-.057-.113-.51-1.23-.7-1.685-.184-.447-.368-.387-.507-.394-.13-.006-.28-.008-.43-.008-.15 0-.395.056-.602.282-.207.225-.79.772-.79 1.882 0 1.11.808 2.18.92 2.33.112.15 1.59 2.426 3.85 3.4 1.258.542 1.86.6 2.534.5.378-.056 1.343-.548 1.534-1.077.19-.527.19-.978.133-1.077-.058-.098-.207-.15-.436-.264z"/>
+        </svg>
+    </a>
+
+    <!-- Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5b0aa28810b99c7b36d457f7/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+</body>
+</html>
