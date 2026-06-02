@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aviaj | Business Travel &amp; Expense Management. Solved.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#003731",
+                        "surface-bright": "#31394d",
+                        "on-tertiary": "#67001b",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed-dim": "#59BABA",
+                        "secondary": "#3A9F9F",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-container": "#a9bad3",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffced0",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdadb",
+                        "surface": "#0b1326",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "secondary-container": "#3a4a5f",
+                        "surface-container-high": "#222a3d",
+                        "on-surface-variant": "#bacac5",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary-fixed": "#40000d",
+                        "inverse-surface": "#dae2fd",
+                        "surface-variant": "#2d3449",
+                        "tertiary-container": "#ffa6ac",
+                        "outline-variant": "#3c4a46",
+                        "on-primary-container": "#00201c",
+                        "on-primary-fixed": "#00201c",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-error": "#690005",
+                        "on-secondary": "#213145",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed": "#59BABA",
+                        "primary": "#59BABA",
+                        "secondary-fixed-dim": "#3A9F9F",
+                        "surface-dim": "#0b1326",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "surface-container": "#171f33",
+                        "outline": "#859490",
+                        "background": "#0b1326",
+                        "primary-container": "#59BABA",
+                        "inverse-primary": "#2d8080",
+                        "on-primary-fixed-variant": "#005047",
+                        "secondary-fixed": "#d3e4fe",
+                        "surface-tint": "#59BABA"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px",
+                        "margin-tablet": "32px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "base": "8px",
+                        "stack-lg": "32px",
+                        "section-gap-lg": "120px",
+                        "container-max": "1280px",
+                        "section-gap-md": "80px",
+                        "unit": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["metropolis"],
+                        "caption": ["hankenGrotesk"],
+                        "display-lg": ["metropolis"],
+                        "headline-md": ["metropolis"],
+                        "body-lg": ["hankenGrotesk"],
+                        "title-lg": ["metropolis"],
+                        "label-md": ["jetbrainsMono"],
+                        "headline-xl": ["metropolis"],
+                        "body-md": ["hankenGrotesk"],
+                        "label-sm": ["jetbrainsMono"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "title-lg": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nav-link-active {
+            border-bottom: 2px solid #59BABA;
+            font-weight: 700;
+        }
+        .glass-card {
+            background: rgba(11, 19, 38, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #59BABA 0%, #3A9F9F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-sm border-b border-surface-container-high">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-12">
+<a class="text-title-lg font-display-lg font-black tracking-tight text-primary" href="#">Aviaj</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md transition-colors duration-200" href="#">Travel</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Expense</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Analytics</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Resources</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Company</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label-md text-label-md text-on-surface-variant font-medium hover:text-primary transition-colors">Login</button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full scale-95 active:scale-90 transition-transform font-bold">Get Started</button>
+</div>
+</div>
+</header>
+<main class="mt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full py-20">
+<div class="z-10 text-center lg:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full text-primary mb-6">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-md text-label-md">4.7 out of 5 | 9K+ reviews</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-8 leading-tight">
+                    Business travel &amp; expense management. <span class="text-gradient">Solved.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto lg:mx-0">
+                    The AI-powered platform designed for the modern enterprise. From booking trips to reconciling spend, manage every aspect of corporate travel effortlessly.
+                </p>
+<!-- Search/Booking Widget -->
+<div class="bg-surface-container p-2 rounded-2xl shadow-xl border border-outline-variant max-w-2xl mx-auto lg:mx-0">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+<button class="flex flex-col items-center justify-center p-4 rounded-xl bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors group">
+<span class="material-symbols-outlined text-primary mb-2">flight_takeoff</span>
+<span class="font-label-md text-[12px] text-center text-on-surface">Book Trip</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-outline mb-2 group-hover:text-primary">receipt_long</span>
+<span class="font-label-md text-[12px] text-center text-on-surface-variant">Manage Cards</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-outline mb-2 group-hover:text-primary">groups</span>
+<span class="font-label-md text-[12px] text-center text-on-surface-variant">Team Offsite</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-surface-container-high transition-colors group">
+<span class="material-symbols-outlined text-outline mb-2 group-hover:text-primary">analytics</span>
+<span class="font-label-md text-[12px] text-center text-on-surface-variant">View Reports</span>
+</button>
+</div>
+<div class="mt-4 flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">location_on</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl bg-surface-container-low border-outline-variant text-on-surface focus:ring-primary focus:border-primary font-body-md" placeholder="Where to?" type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:bg-secondary transition-all flex items-center justify-center gap-2">
+                            Search Flights
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Hero Visual -->
+<div class="relative hidden lg:block">
+<div class="relative w-full aspect-square max-w-[560px] ml-auto">
+<div class="absolute inset-0 bg-primary/10 rounded-full scale-110 blur-3xl"></div>
+<!-- Floating Card 1: Itinerary -->
+<div class="absolute top-10 right-10 z-20 w-[320px] glass-card p-6 rounded-2xl shadow-2xl animate-float-slow">
+<div class="flex justify-between items-center mb-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-primary">flight</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Trip Itinerary</span>
+</div>
+<span class="text-primary font-bold font-label-md">Confirmed</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="font-bold text-title-lg text-on-surface">SFO</div>
+<div class="text-caption text-on-surface-variant">8:45 AM</div>
+</div>
+<div class="flex-1 border-t-2 border-dashed border-outline-variant relative">
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary bg-surface-container px-1">flight</span>
+</div>
+<div>
+<div class="font-bold text-title-lg text-on-surface">LHR</div>
+<div class="text-caption text-on-surface-variant">2:20 PM</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Image Container -->
+<div class="absolute inset-0 z-10 rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/30">
+<img alt="Professional Traveler" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzU4a_GkWLIW4Kp_R5aSzCIVMQ3ghjqb7I3xSqJBfqgiM-mbNYDI6Jr3HEx22SCsN3qerm6toTD5_F-ilM9gdolNIQlVFFWtn33sFugGkgvwRP6wQlWG1V6vwBhT7imP8BggIrHF8AItoKtkKStVv8g37JHimBrekAthohgZ--lVipzaR4lZp4bqETz6dhdbdeE37dHPX22tH8QsJiycqbIstG_jJ36VEsEBTPnWuvr7xNup0uU4kXOBOxl7cOP97na5eafHbICuY"/>
+</div>
+<!-- Floating Card 2: Receipt -->
+<div class="absolute -bottom-12 -left-12 z-20 w-[240px] bg-surface-container-high text-on-surface p-6 rounded-2xl shadow-2xl border border-outline-variant">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="font-label-md text-[12px] text-primary">Auto-reconciled</span>
+</div>
+<div class="font-headline-md text-headline-md mb-1 text-on-surface">$45.00</div>
+<div class="text-caption text-on-surface-variant">Dinner Expense</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary text-[10px] font-bold">M</div>
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px] font-bold">J</div>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-16 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<p class="text-center font-label-md text-label-md text-on-surface-variant mb-10 tracking-widest uppercase">Trusted by thousands of innovative companies</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<span class="text-headline-md font-black tracking-tighter text-on-surface">DATADOG</span>
+<span class="text-headline-md font-black tracking-tighter text-on-surface">NILFISK</span>
+<span class="text-headline-md font-black tracking-tighter text-on-surface">MANGODB</span>
+<span class="text-headline-md font-black tracking-tighter text-on-surface">PRIMARK</span>
+<span class="text-headline-md font-black tracking-tighter text-on-surface">ZOOM</span>
+<span class="text-headline-md font-black tracking-tighter text-on-surface">CANVA</span>
+</div>
+</div>
+</section>
+<!-- Feature Section: One-Stop Shop -->
+<section class="py-section-gap-lg bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1">
+<div class="rounded-3xl overflow-hidden shadow-2xl relative border border-outline-variant/30">
+<img alt="Navan Travel Interface" class="w-full object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARGNIkDJPbFtPLY2s_3s4cAhyb_C0ljlr3Nia33yqbTjjY0HVYgyPmEn8XK-3elqHgcIqTvqKZ2zdZPDLPZYMJsGYt0oA8Wtpj9t7oz-_bwdU6yTcT4LfUABxFNyNCNmW1XycUiroKCcA8zj7hxRw62w15GgBu219Pohy3z14K6JWqXwAl_ZBNoNLHH5xBwQy9BSQ-Zkao-fLbbtMrwSG1PZ9I9yLJLpT4lB46tjZPg2TpJ0sZdnqhIjA6ss-hUi_RlqdHTxubywU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent"></div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="text-primary font-bold font-label-md tracking-wider uppercase mb-4 block">Navan Travel</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">One-Stop Shop for Business Travel</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Build, manage, and scale your company’s travel program with ease. Empower employees to book from an extensive inventory while staying within your spending limits. Our AI-driven engine suggests the best options based on historical preferences and corporate policy.
+                    </p>
+<ul class="space-y-4 mb-10">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px]">check</span>
+<span class="font-body-md text-on-surface">Global inventory of flights, hotels, and car rentals</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px]">check</span>
+<span class="font-body-md text-on-surface">Real-time policy compliance checks at checkout</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-1 rounded-full text-[20px]">check</span>
+<span class="font-body-md text-on-surface">24/7 dedicated travel support for all employees</span>
+</li>
+</ul>
+<a class="inline-flex items-center gap-2 font-bold text-primary group" href="#">
+                        Learn more about Aviaj Travel
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Section: Centralized Spend -->
+<section class="py-section-gap-lg bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="text-primary font-bold font-label-md tracking-wider uppercase mb-4 block">Navan Expense</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">Centralized Spend &amp; Real-time Visibility</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+                        Streamline your expense management from swipe to reconciliation. Automate categorization, reports, and reimbursements. Boost productivity and optimize savings with AI-powered insights that flag out-of-policy spending before it happens.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant">
+<div class="font-title-lg text-title-lg text-primary mb-2">90%</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Reduction in manual reporting</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm border border-outline-variant">
+<div class="font-title-lg text-title-lg text-primary mb-2">Instant</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Policy violation detection</div>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 font-bold text-primary group" href="#">
+                        Explore Expense Management
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="relative">
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="rounded-3xl overflow-hidden shadow-2xl relative z-10 border border-outline-variant/30">
+<img alt="Expense Dashboard" class="w-full object-cover aspect-[4/3]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp_z0iz3TGorgO9D9uq7PLuDKdkvFmVXfvViCdgUHRbTueI2WJgHLMlu2jSo0e18PNjEZ4_I6h0i_rJpVESjDYSpAbf-9zEBvbQxoOWx0UKU-oTb5fo_PMGQvbU3e2LUVOszRNrpesEndmhN5f4owBC09s69cDTj8DJOhEZbXI1nqao2H4X5h2IJOuPQTHziEwSCRoDISDFvjDkGCwklYQVLTH2yQcJmxNCbekcpGOzCR3anFc-OIRrvjY_KHaiLTCiadVKD5e4WI"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Destinations for Everyone -->
+<section class="py-section-gap-lg bg-surface">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Every traveler's best companion</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Designed to serve the needs of everyone in your organization, from the frequent flyer to the CFO.</p>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-3xl h-[400px]">
+<img alt="Road Warriors" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPhgP_FcyuBcdmXNHCLaX-5zEwgm-Npks7hAE4YuKGZDSap-EKFtikk6dNrZPL1dd2EabBQ0qBeTYHOlRPDZjDmhMntrxxEMaUK-wy0QYM2XgGMg5HyBQxAMG38omUYqhkn6rrPpHQdYg-bu81lRciGs5GiNLtox98O7QTPISJ-8Ao2i3N8xV4R7bTZCjg0wiHenPClnF9TXiLYXNrgXEknIJvBOmUshCmoRUIAPAuW5nNan-XJxyC3CruXTOEvsZxkZnKADwGLbg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/40 to-transparent p-8 flex flex-col justify-end">
+<h3 class="text-on-surface font-title-lg text-title-lg mb-2">Road Warriors</h3>
+<p class="text-on-surface-variant font-body-md mb-4">Book and manage everything in one tap. Earn rewards for your personal trips while staying compliant.</p>
+<button class="w-fit text-on-primary font-bold bg-primary px-6 py-2 rounded-full hover:bg-secondary transition-colors">Learn more</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative overflow-hidden rounded-3xl h-[400px]">
+<img alt="Travel Managers" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXJQC6UVZNEnaeq7xsI3VXLY8D3bp8IRKP8N50DIEuPeqaOC4ozTGHZ1ppUc5AR30COsUSRsSGjwgK4H4PihNM2qZw7KbIfry1B66hTlffrODDHDWxZAJxTNlsr_8ft27HvYsy45Kz7-9IddylIFb6CVk9-txZBU148M6TwJoAlsimZXeh5h6Dr7mPerj7dqZiNU9Qvs2kNvFlbdVuNg5lu0U3qrnSUqsrBPWZQCtTaRFn0JlxMxw7kjoNjxwheQdmLeIoqttoNAs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/90 to-transparent p-8 flex flex-col justify-end">
+<h3 class="text-on-surface font-title-lg text-title-lg mb-2">Travel Managers</h3>
+<p class="text-on-surface-variant font-caption text-caption">Set guardrails and know where your team is at all times.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative overflow-hidden rounded-3xl h-[400px]">
+<img alt="Finance &amp; Accounting" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKJR7OtvIsrJkVGdl15UzdZ-IXUxmEl7XOwNqh8yle5Nh-7Dyr2he4ou05a6NYaFhcXLJXZR07yZr20D_3q4JkOGiac7h2fRQZ2O0eVz9pxlW3wINzcbSayszI3Q6HwrUtrgkPoek0MRCOl6QIiLFsBGyMjkDkw2lkKDCD2DKvvjvqr6bTU4yDZE0arWqTkKDFF3xNyzDntx2pRaIy9Wl-RkSrdOqePta_wl_d4HdNSQrWjqRymEkzkc6F_Y6YX3E7DWWIMDIx-ys"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/90 to-transparent p-8 flex flex-col justify-end">
+<h3 class="text-on-surface font-title-lg text-title-lg mb-2">Finance</h3>
+<p class="text-on-surface-variant font-caption text-caption">Automated reconciliation and real-time visibility into every penny.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTAs -->
+<section class="py-section-gap-lg bg-secondary text-on-primary overflow-hidden relative">
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-20"></div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter text-center relative z-10">
+<h2 class="font-headline-xl text-headline-xl mb-8 text-on-primary">Ready to transform your T&amp;E?</h2>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-full font-bold text-body-lg hover:bg-white hover:text-secondary transition-colors shadow-lg">Get Started for Free</button>
+<button class="border-2 border-primary text-primary bg-on-primary-container/20 px-10 py-5 rounded-full font-bold text-body-lg hover:bg-primary hover:text-on-primary transition-colors">Request a Demo</button>
+</div>
+<p class="mt-8 opacity-70 font-label-md text-label-md">No credit card required. Setup takes less than 5 minutes.</p>
+</div>
+</section>
+</main>
+<!-- Comprehensive Footer -->
+<footer class="bg-surface-container-lowest text-on-surface w-full py-section-gap-md border-t border-outline-variant/30">
+<div class="grid grid-cols-2 md:grid-cols-6 gap-gutter px-margin-mobile md:px-gutter max-w-container-max mx-auto">
+<div class="col-span-2">
+<a class="text-headline-md font-display-lg font-bold text-primary mb-6 block" href="#">Aviaj</a>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mb-8">
+                © 2024 Aviaj. All rights reserved. Precise corporate travel and expense management.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px] text-primary">public</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px] text-primary">share</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary/20 transition-colors" href="#"><span class="material-symbols-outlined text-[20px] text-primary">mail</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-6">Product</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Travel</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Expense</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Rewards</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Payments</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-6">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Enterprises</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Small Business</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">By Industry</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-6">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Case Studies</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Blog</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Help Center</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-primary mb-6">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-20 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="#">Terms of Service</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary" href="#">Cookies</a>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">System Status: All Systems Operational</span>
+</div>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.animate-float-slow');
+        
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+            
+            cards.forEach(card => {
+                const speed = 20;
+                card.style.transform = `translate(${mouseX * speed}px, ${mouseY * speed}px)`;
+            });
+        });
+
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    });
+</script>
+</body></html>
+
