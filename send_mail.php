@@ -9,8 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $name = isset($_POST['name']) ? trim($_POST['name']) : '';
 $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $budget = isset($_POST['budget']) ? trim($_POST['budget']) : '';
+$phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
 
-if (empty($name) || empty($email) || empty($budget)) {
+if (empty($name) || empty($email) || empty($phone) || empty($budget)) {
     echo json_encode(['success' => false, 'message' => 'Please fill in all fields.']);
     exit;
 }
@@ -26,6 +27,7 @@ $subject = "New Consultation Request: " . $name;
 $message_body = "You have received a new strategy session request from the Ajath Infotech landing page.\n\n" .
                 "Name: $name\n" .
                 "Email: $email\n" .
+                "Phone: $phone\n" .
                 "Budget Range: $budget\n";
 
 // Raw SMTP client implementation
