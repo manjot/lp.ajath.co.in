@@ -126,18 +126,20 @@
 <a href="#" class="flex items-center gap-2 group">
     <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-auto h-10">
         <defs>
-            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#0F62FE" />
-                <stop offset="100%" stop-color="#8A3FFC" />
+            <linearGradient id="logo-grad" x1="0%" y1="50%" x2="100%" y2="50%">
+                <stop offset="0%" stop-color="#D33D89" />
+                <stop offset="50%" stop-color="#8A3FFC" />
+                <stop offset="100%" stop-color="#3F51B5" />
             </linearGradient>
         </defs>
-        <g class="transition-transform duration-300 transform group-hover:scale-110 origin-center" style="transform-origin: 16px 20px;">
-            <rect x="2" y="6" width="28" height="28" rx="6" fill="url(#logo-grad)" />
-            <path d="M10 24L16 12L22 24H10Z" fill="white" />
-            <circle cx="16" cy="18" r="2" fill="#0F62FE" />
+        <!-- emblem symbol -->
+        <g stroke="url(#logo-grad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 transform group-hover:scale-110 origin-center" style="transform-origin: 21px 20px;">
+            <path d="M 21.3 8 C 14.7 8, 8.7 16, 8.7 25.3 C 8.7 30, 13.3 31.3, 21.3 31.3 C 29.3 31.3, 34 30, 34 25.3 C 34 16, 28 8, 21.3 8 Z" />
+            <path d="M 34 25.3 C 36.7 30, 42 31.3, 48 27.3 L 48 16" />
+            <circle cx="48" cy="8.7" r="3.3" fill="url(#logo-grad)" stroke="none" />
         </g>
-        <text x="38" y="26" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-size="20" font-weight="800" fill="#0F62FE" class="tracking-wide">Ajath</text>
-        <text x="94" y="26" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-size="20" font-weight="300" fill="#161616" class="dark:fill-white tracking-wide">Infotech</text>
+        <!-- lowercase text 'ajath' -->
+        <text x="61.3" y="28.7" font-family="'Inter', 'Outfit', sans-serif" font-size="24" font-weight="800" fill="#161616" class="dark:fill-white tracking-tighter transition-colors duration-200">ajath</text>
     </svg>
 </a>
 </div>
