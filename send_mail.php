@@ -21,7 +21,7 @@ $smtp_host = 'ssl://smtp.gmail.com';
 $smtp_port = 465;
 $smtp_user = 'info@ajath.us';
 $smtp_pass = 'mqzh jolc ltih cwen'; // App Password
-$to_email = 'manjot2306@gmail.com';
+$to_emails = ['manjot2306@gmail.com', 'shachisheh@gmail.com'];
 
 $subject = "New Consultation Request: " . $name;
 $message_body = "You have received a new strategy session request from the Ajath Infotech landing page.\n\n" .
@@ -94,10 +94,16 @@ function send_smtp_email($host, $port, $user, $pass, $to, $subject, $body) {
     }
 }
 
-$result = send_smtp_email($smtp_host, $smtp_port, $smtp_user, $smtp_pass, $to_email, $subject, $message_body);
+$failed = [];
+foreach ($to_emails as $to_email) {
+    $result = send_smtp_email($smtp_host, $smtp_port, $smtp_user, $smtp_pass, $to_email, $subject, $message_body);
+    if ($result !== true) {
+        $failed[] = $to_email . ': ' . $result;
+    }
+}
 
-if ($result === true) {
+if (empty($failed)) {
     echo json_encode(['success' => true, 'message' => 'Thank you! Your strategy session request has been submitted successfully.']);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Failed to send email. Error: ' . $result]);
+    echo json_encode(['success' => false, 'message' => 'Failed to send email. Error: ' . implode('; ', $failed)]);
 }
