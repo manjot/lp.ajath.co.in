@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $name   = isset($_POST['name'])   ? trim($_POST['name'])   : '';
 $email  = isset($_POST['email'])  ? trim($_POST['email'])  : '';
 $phone  = isset($_POST['phone'])  ? trim($_POST['phone'])  : '';
-$budget = isset($_POST['budget']) ? trim($_POST['budget']) : '';
+$budget  = isset($_POST['budget'])  ? trim($_POST['budget'])  : '';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
 if (empty($name) || empty($email) || empty($phone) || empty($budget)) {
     echo json_encode(['success' => false, 'message' => 'Please fill in all fields.']);
@@ -30,7 +31,8 @@ $message_body = "You have received a new strategy session request from the Ajath
                 "Name: $name\n" .
                 "Email: $email\n" .
                 "Phone: $phone\n" .
-                "Budget Range: $budget\n";
+                "Budget Range: $budget\n" .
+                "Message: $message\n";
 
 /**
  * Sends one email to multiple recipients in a single SMTP session.
