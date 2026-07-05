@@ -298,7 +298,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<footer class="apbc-footer-section" data-background="https://apps.ajath.co.in/assets/img/business-4/footer-bg.jpg">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-5 col-md-6">
+				<div class="col-lg-6 col-md-6">
 					<div class="apbc-footer-widget">
 						<div class="apbc-headline">
 							<h5><img src="https://apps.ajath.co.in/assets/img/Ajath_Logo.png" alt="Ajath Infotech Pvt. Ltd" style="width: 150px; height: 47px;"></h5>
@@ -308,7 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-6 col-md-6">
 					<div class="apbc-footer-widget">
 						<div class="apbc-headline">
 							<h5>Contact Us</h5>
@@ -321,53 +321,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<li><i class="fas fa-phone"></i> +91 78385 18049</li>
 								<li><i class="fas fa-envelope"></i> info@ajath.co.in</li>
 								<li><i class="fas fa-home"></i> WeWork DLF Forum, Cybercity, Phase III, Gurugram, Haryana, 122002</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="apbc-footer-widget">
-						<div class="apbc-headline">
-							<h5>Gallery</h5>
-						</div>
-						<div class="apbc-footer-gallery">
-							<ul>
-								<li>
-									<img src="https://apps.ajath.co.in/assets/img/business-4/footer/gl-1.jpg" alt="">
-									<div class="apbc-ft-gl-overlay">
-										<a href="#"><i class="far fa-image"></i></a>
-									</div>
-								</li>
-								<li>
-									<img src="https://apps.ajath.co.in/assets/img/business-4/footer/gl-2.jpg" alt="">
-									<div class="apbc-ft-gl-overlay">
-										<a href="#"><i class="far fa-image"></i></a>
-									</div>
-								</li>
-								<li>
-									<img src="https://apps.ajath.co.in/assets/img/business-4/footer/gl-3.jpg" alt="">
-									<div class="apbc-ft-gl-overlay">
-										<a href="#"><i class="far fa-image"></i></a>
-									</div>
-								</li>
-								<li>
-									<img src="https://apps.ajath.co.in/assets/img/business-4/footer/gl-3.jpg" alt="">
-									<div class="apbc-ft-gl-overlay">
-										<a href="#"><i class="far fa-image"></i></a>
-									</div>
-								</li>
-								<li>
-									<img src="https://apps.ajath.co.in/assets/img/business-4/footer/gl-2.jpg" alt="">
-									<div class="apbc-ft-gl-overlay">
-										<a href="#"><i class="far fa-image"></i></a>
-									</div>
-								</li>
-								<li>
-									<img src="https://apps.ajath.co.in/assets/img/business-4/footer/gl-1.jpg" alt="">
-									<div class="apbc-ft-gl-overlay">
-										<a href="#"><i class="far fa-image"></i></a>
-									</div>
-								</li>
 							</ul>
 						</div>
 					</div>
