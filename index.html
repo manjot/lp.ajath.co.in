@@ -895,9 +895,8 @@
                     
                     formMessage.classList.remove('hidden');
                     if (result.success) {
-                        formMessage.classList.add('bg-green-500/10', 'text-green-600', 'border', 'border-green-500/20');
-                        formMessage.innerText = result.message;
                         form.reset();
+                        window.location.href = 'thankyou.php';
                     } else {
                         formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
                         formMessage.innerText = result.message || 'An error occurred. Please try again.';
