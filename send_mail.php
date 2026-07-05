@@ -21,7 +21,7 @@ if (empty($name) || empty($email) || empty($phone) || empty($budget)) {
 $smtp_host = 'ssl://smtp.gmail.com';
 $smtp_port = 465;
 $smtp_user = 'info@ajath.us';
-$smtp_pass = 'mqzh jolc ltih cwen'; // App Password
+$smtp_pass = 'qyjezabchvvicodk'; // App Password
 
 // All recipients — delivered in a single SMTP session
 $to_emails = ['manjot2306@gmail.com', 'shachisheh@gmail.com'];
