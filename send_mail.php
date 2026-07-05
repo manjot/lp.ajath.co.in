@@ -24,7 +24,7 @@ $smtp_user = 'info@ajath.us';
 $smtp_pass = 'qyjezabchvvicodk'; // App Password
 
 // All recipients — delivered in a single SMTP session
-$to_emails = ['manjot2306@gmail.com', 'shachisheh@gmail.com'];
+$to_emails = ['manjot2306@gmail.com'];
 
 $subject = "New Consultation Request: " . $name;
 $message_body = "You have received a new strategy session request from the Ajath Infotech landing page.\n\n" .
