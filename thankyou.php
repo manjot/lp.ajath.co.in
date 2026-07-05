@@ -163,7 +163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="row align-items-center">
 				<div class="col-lg-3 col-md-6 col-7">
 					<div class="apbc-logo-wrapper">
-						<a href="https://www.ajath.co.in"><img src="https://apps.ajath.co.in/assets/img/Ajath_black_logo_2024.png" alt="Ajath Infotech Pvt. Ltd"></a>
+						<a href="https://lp.ajath.co.in/"><img src="https://apps.ajath.co.in/assets/img/Ajath_black_logo_2024.png" alt="Ajath Infotech Pvt. Ltd"></a>
 					</div>
 				</div>
 			</div>
