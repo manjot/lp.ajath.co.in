@@ -894,11 +894,21 @@
                 const formData = new FormData(form);
                 
                 try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 10000);
+                    const forceRedirectId = setTimeout(() => {
+                        window.location.href = 'thankyou.php';
+                    }, 4000);
+
                     const response = await fetch('send_mail.php', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        signal: controller.signal
                     });
                     
+                    clearTimeout(timeoutId);
+                    clearTimeout(forceRedirectId);
+
                     const result = await response.json();
                     
                     formMessage.classList.remove('hidden');
@@ -910,9 +920,7 @@
                         formMessage.innerText = result.message || 'An error occurred. Please try again.';
                     }
                 } catch (error) {
-                    formMessage.classList.remove('hidden');
-                    formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
-                    formMessage.innerText = 'Unable to connect to the server. Please check your connection.';
+                    window.location.href = 'thankyou.php';
                 } finally {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;
