@@ -141,7 +141,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- OpenAI Ads Conversion Event -->
 <script>
   if (window.oaiq) {
-    oaiq("measure", "lead_created");
+    oaiq("measure", "lead_created", { type: "customer_action" });
   }
 </script>
 </head>
