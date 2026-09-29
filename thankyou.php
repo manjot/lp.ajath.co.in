@@ -9,6 +9,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TFLKC56R');</script>
 <!-- End Google Tag Manager -->
+<!-- OpenAI Ads Pixel -->
+<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"DSySGzUBgWNvKpPFSLkkRT",debug:true});</script>
+<!-- End OpenAI Ads Pixel -->
 
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -135,6 +138,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('event', 'conversion', {'send_to': 'AW-16651354905/ztUQCLz8oegbEJmG_oM-'});
 </script>
 
+<!-- OpenAI Ads Conversion Event -->
+<script>
+  if (window.oaiq) {
+    oaiq("measure", "lead_created");
+  }
+</script>
 </head>
 
 <body class="apbc-body" data-spy="scroll" data-target=".apbc-nav-menu" data-offset="80">
