@@ -72,10 +72,10 @@ if (mb_strlen($message) < 1) {
 }
 
 // SMTP Configuration
-$smtp_host = 'ssl://mail.ajath.us';
+$smtp_host = 'ssl://smtp.gmail.com';
 $smtp_port = 465;
 $smtp_user = 'info@ajath.us';
-$smtp_pass = '#$1234567#';
+$smtp_pass = 'qyjezabchvvicodk'; // App Password
 
 $to = 'manjot2306@gmail.com';
 $subject = 'New Consultation Request: ' . $name;
