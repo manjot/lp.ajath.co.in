@@ -70,6 +70,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         .logo-dark { display: none !important; }
         .dark .logo-light { display: none !important; }
         .dark .logo-dark { display: inline-block !important; }
+
+        .visually-hidden {
+            position: absolute;
+            clip-path: inset(50%);
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            white-space: nowrap;
+        }
+        .hint {
+            display: block;
+            color: #5f6368;
+            font-size: 0.78rem;
+            margin-bottom: 0.25rem;
+        }
+        .error-msg {
+            display: none;
+            color: #d93025;
+            font-size: 0.8125rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+        #consultation-form :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) {
+            border-color: #d93025 !important;
+            background-color: #fce8e6 !important;
+        }
+        #consultation-form :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) + .error-msg {
+            display: block;
+        }
+        #consultation-form :is(input, select, textarea):required:user-valid {
+            border-color: #188038;
+        }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -239,32 +274,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="glass-card rounded-xl p-8 shadow-xl">
 <h3 class="font-headline-md text-headline-md mb-2 text-on-background">Free Consultation</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">Schedule a call with our Delhi NCR tech leads.</p>
-<form id="consultation-form" class="space-y-4">
-<div>
-<label class="block font-label-sm text-label-sm mb-1 text-on-surface">Full Name</label>
-<input name="name" required class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="e.g. Rahul Sharma" type="text"/>
+<form id="consultation-form" action="send_mail.php" method="POST" class="space-y-4">
+<div aria-hidden="true" class="visually-hidden">
+<label for="website_url">Website</label>
+<input id="website_url" name="website_url" type="text" tabindex="-1" autocomplete="off"/>
 </div>
 <div>
-<label class="block font-label-sm text-label-sm mb-1 text-on-surface">Business Email</label>
-<input name="email" required class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="rahul@company.in" type="email"/>
+<label for="consultation-name" class="block font-label-sm text-label-sm mb-1 text-on-surface">Full Name *</label>
+<input id="consultation-name" name="name" required minlength="3" autocomplete="name" aria-errormessage="name-error" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="e.g. Rahul Sharma" type="text"/>
+<div id="name-error" class="error-msg"><span aria-hidden="true">❌</span> Please enter your full name (at least 3 characters).</div>
 </div>
 <div>
-<label class="block font-label-sm text-label-sm mb-1 text-on-surface">Contact Number</label>
-<input name="phone" required class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="+91 98765 43210" type="tel" pattern="[+0-9\s\-]{7,15}" autocomplete="tel"/>
+<label for="consultation-email" class="block font-label-sm text-label-sm mb-1 text-on-surface">Business Email *</label>
+<span id="email-hint" class="hint">Format: name@company.com (active work or personal email)</span>
+<input id="consultation-email" name="email" required autocomplete="email" autocorrect="off" autocapitalize="off" spellcheck="false" aria-describedby="email-hint" aria-errormessage="email-error" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="rahul@company.in" type="email"/>
+<div id="email-error" class="error-msg"><span aria-hidden="true">❌</span> Please enter a valid, active email address.</div>
 </div>
 <div>
-<label class="block font-label-sm text-label-sm mb-1 text-on-surface">Budget Range (INR)</label>
-<select name="budget" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all">
+<label for="consultation-phone" class="block font-label-sm text-label-sm mb-1 text-on-surface">Contact Number *</label>
+<span id="phone-hint" class="hint">10-digit reachable mobile or WhatsApp number</span>
+<input id="consultation-phone" name="phone" required inputmode="tel" autocomplete="tel" pattern="[+0-9\s\-]{10,15}" aria-describedby="phone-hint" aria-errormessage="phone-error" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="+91 98765 43210" type="tel"/>
+<div id="phone-error" class="error-msg"><span aria-hidden="true">❌</span> Please enter a valid 10-digit contact number.</div>
+</div>
+<div>
+<label for="consultation-budget" class="block font-label-sm text-label-sm mb-1 text-on-surface">Budget Range (INR) *</label>
+<select id="consultation-budget" name="budget" required aria-errormessage="budget-error" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all">
+<option value="" disabled selected>Select Project Budget *</option>
 <option value="₹3L - ₹10L">₹3L - ₹10L</option>
 <option value="₹10L - ₹50L">₹10L - ₹50L</option>
 <option value="₹50L+">₹50L+</option>
 </select>
+<div id="budget-error" class="error-msg"><span aria-hidden="true">❌</span> Please select your estimated project budget.</div>
 </div>
 <div>
-<label class="block font-label-sm text-label-sm mb-1 text-on-surface">Message</label>
-<textarea name="message" rows="4" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all resize-none" placeholder="Briefly describe your project or what you're looking to build…"></textarea>
+<label for="consultation-message" class="block font-label-sm text-label-sm mb-1 text-on-surface">Project Requirements *</label>
+<span id="message-hint" class="hint">Minimum 15 characters describing your app idea, platform (iOS/Android), or timeline</span>
+<textarea id="consultation-message" name="message" rows="4" required minlength="15" aria-describedby="message-hint" aria-errormessage="message-error" class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="Briefly describe your project or what you're looking to build…"></textarea>
+<div id="message-error" class="error-msg"><span aria-hidden="true">❌</span> Please describe your project requirements (at least 15 characters).</div>
 </div>
-<div id="form-message" class="hidden text-sm p-3 rounded-lg font-semibold text-center transition-all duration-300"></div>
+<div id="form-message" role="status" aria-live="polite" class="hidden text-sm p-3 rounded-lg font-semibold text-center transition-all duration-300"></div>
 <button id="submit-btn" class="w-full py-4 primary-gradient text-on-primary rounded-lg font-bold hover:shadow-2xl transition-all active:scale-[0.98]" type="submit">Claim My Free Strategy Session</button>
 </form>
 </div>
@@ -888,55 +936,164 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }
         });
 
-        // AJAX Form Submission for SMTP mailer
+        // AJAX Form Submission for SMTP mailer with strict lead qualification
         const form = document.getElementById('consultation-form');
         const formMessage = document.getElementById('form-message');
         const submitBtn = document.getElementById('submit-btn');
 
+        const UserInvalidFallback = (() => {
+            const dirtyState = new WeakMap();
+            const updateState = (input) => {
+                const isValid = input.checkValidity();
+                input.classList.toggle('user-invalid-fallback', !isValid);
+                input.classList.toggle('user-valid-fallback', isValid);
+                if (!isValid) {
+                    input.setAttribute('aria-invalid', 'true');
+                } else {
+                    input.removeAttribute('aria-invalid');
+                }
+            };
+            const handleEvent = (event) => {
+                const input = event.target;
+                if (event.type === 'reset') {
+                    const controls = input.elements || [];
+                    for (const control of controls) {
+                        dirtyState.delete(control);
+                        control.classList.remove('user-invalid-fallback', 'user-valid-fallback');
+                        control.removeAttribute('aria-invalid');
+                    }
+                    return;
+                }
+                if (!input.checkValidity) return;
+                if (event.type === 'input' || event.type === 'change') {
+                    const state = dirtyState.get(input) || { hasInteracted: false, hasBlurred: false };
+                    state.hasInteracted = true;
+                    dirtyState.set(input, state);
+                    if (state.hasBlurred) updateState(input);
+                } else if (event.type === 'blur') {
+                    const state = dirtyState.get(input) || { hasInteracted: false, hasBlurred: false };
+                    state.hasBlurred = true;
+                    dirtyState.set(input, state);
+                    if (state.hasInteracted) updateState(input);
+                }
+            };
+            const init = (root = document) => {
+                if (CSS.supports('selector(:user-invalid)')) return;
+                root.addEventListener('blur', handleEvent, true);
+                root.addEventListener('input', handleEvent);
+                root.addEventListener('change', handleEvent);
+                root.addEventListener('reset', handleEvent, true);
+            };
+            return { init };
+        })();
+
         if (form) {
+            UserInvalidFallback.init(form);
+
+            const emailInput = document.getElementById('consultation-email');
+            const phoneInput = document.getElementById('consultation-phone');
+            const messageInput = document.getElementById('consultation-message');
+
+            const applyCustomConstraints = (target) => {
+                if (target === emailInput && emailInput) {
+                    const val = emailInput.value.trim().toLowerCase();
+                    const local = val.split('@')[0] || '';
+                    if (local && (/(.)\1{3,}/.test(local) || /^(test|testing|example|asdf|qwerty|demo|fake|none|null)$/.test(local) || /^[0-9]+$/.test(local))) {
+                        emailInput.setCustomValidity('Please enter an active corporate or personal email address.');
+                    } else {
+                        emailInput.setCustomValidity('');
+                    }
+                }
+                if (target === phoneInput && phoneInput) {
+                    const digits = phoneInput.value.replace(/\D+/g, '');
+                    if (digits && (digits.length < 10 || digits.length > 15 || /^(\d)\1{7,}$/.test(digits) || digits.includes('12345678') || digits.includes('00000000'))) {
+                        phoneInput.setCustomValidity('Please enter a valid reachable 10-digit phone number.');
+                    } else {
+                        phoneInput.setCustomValidity('');
+                    }
+                }
+                if (target === messageInput && messageInput) {
+                    const msg = messageInput.value.trim();
+                    if (msg && (msg.length < 15 || /^(.)\1{6,}$/u.test(msg))) {
+                        messageInput.setCustomValidity('Please briefly describe your project requirements (at least 15 characters).');
+                    } else {
+                        messageInput.setCustomValidity('');
+                    }
+                }
+            };
+
+            const syncAriaInvalid = (el) => {
+                if (!el || typeof el.checkValidity !== 'function') return;
+                applyCustomConstraints(el);
+                if (!el.checkValidity()) {
+                    el.setAttribute('aria-invalid', 'true');
+                } else {
+                    el.removeAttribute('aria-invalid');
+                }
+            };
+
+            form.addEventListener('blur', (e) => {
+                if (e.target.matches('input[required], select[required], textarea[required]')) {
+                    syncAriaInvalid(e.target);
+                }
+            }, true);
+
+            form.addEventListener('input', (e) => {
+                if (e.target.matches('input[required], select[required], textarea[required]')) {
+                    e.target.setCustomValidity('');
+                    if (e.target.checkValidity()) {
+                        e.target.removeAttribute('aria-invalid');
+                    }
+                }
+            });
+
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                
+
+                form.querySelectorAll('input[required], select[required], textarea[required]').forEach(syncAriaInvalid);
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
                 // Reset message state
                 formMessage.classList.add('hidden');
                 formMessage.classList.remove('bg-green-500/10', 'text-green-600', 'border-green-500/20', 'bg-red-500/10', 'text-red-600', 'border-red-500/20');
                 formMessage.innerText = '';
-                
-                // Disable button and show loading state
+
+                // Disable button after valid submission to prevent double-posts
                 submitBtn.disabled = true;
                 const originalBtnText = submitBtn.innerText;
                 submitBtn.innerText = 'Sending Request...';
-                
+
                 const formData = new FormData(form);
-                
+
                 try {
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 10000);
-                    const forceRedirectId = setTimeout(() => {
-                        window.location.href = 'thankyou.php';
-                    }, 1500);
+                    const timeoutId = setTimeout(() => controller.abort(), 20000);
 
                     const response = await fetch('send_mail.php', {
                         method: 'POST',
                         body: formData,
                         signal: controller.signal
                     });
-                    
+
                     clearTimeout(timeoutId);
-                    clearTimeout(forceRedirectId);
 
                     const result = await response.json();
-                    
+
                     formMessage.classList.remove('hidden');
-                    if (result.success) {
+                    if (result.success && result.token) {
                         form.reset();
-                        window.location.href = 'thankyou.php';
+                        window.location.href = 'thankyou.php?token=' + encodeURIComponent(result.token);
                     } else {
                         formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
-                        formMessage.innerText = result.message || 'An error occurred. Please try again.';
+                        formMessage.innerText = result.message || 'An error occurred. Please check your details and try again.';
                     }
                 } catch (error) {
-                    window.location.href = 'thankyou.php';
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('bg-red-500/10', 'text-red-600', 'border', 'border-red-500/20');
+                    formMessage.innerText = 'Network timeout while sending your request. Please try again or WhatsApp us at +91 78385 18049.';
                 } finally {
                     submitBtn.disabled = false;
                     submitBtn.innerText = originalBtnText;

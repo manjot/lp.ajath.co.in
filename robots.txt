@@ -1,9 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /thankyou.php
+Disallow: /send_mail.php
 
 # Explicitly allow OpenAI crawlers
 User-agent: OAI-AdsBot
 Allow: /
+Disallow: /thankyou.php
+Disallow: /send_mail.php
 
 User-agent: OAI-SearchBot
 Allow: /

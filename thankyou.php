@@ -1,4 +1,35 @@
+<?php
+session_start();
 
+$raw_token = isset($_GET['token']) ? trim((string)$_GET['token']) : '';
+$should_fire_conversion = false;
+$conversion_txn_id = '';
+
+if ($raw_token !== '') {
+    $parts = explode('.', $raw_token);
+    if (count($parts) === 3) {
+        list($ts, $nonce, $sig) = $parts;
+        $expected_sig = substr(hash_hmac('sha256', $ts . '.' . $nonce, 'ajath_lp_verified_lead_2026'), 0, 32);
+        $age = time() - (int)$ts;
+        $already_used = isset($_SESSION['consumed_tokens'][$nonce]);
+
+        if (hash_equals($expected_sig, $sig) && $age >= -10 && $age <= 180 && !$already_used) {
+            $should_fire_conversion = true;
+            $conversion_txn_id = preg_replace('/[^a-f0-9]/', '', $nonce);
+            if (!isset($_SESSION['consumed_tokens'])) {
+                $_SESSION['consumed_tokens'] = [];
+            }
+            $_SESSION['consumed_tokens'][$nonce] = true;
+            unset($_SESSION['verified_conversion_token']);
+        }
+    }
+}
+
+if (!$should_fire_conversion && empty($raw_token)) {
+    header('Location: /', true, 302);
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Ajath Infotech Pvt Ltd">
-    <meta name="robots" content="index,follow">
+    <meta name="robots" content="noindex,nofollow">
     <meta name="revisit-after" content="1 days">
     <meta name="distribution" content="global">
     <meta name="copyright" content="Ajath Infotech Pvt Ltd">
@@ -133,17 +164,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'AW-16651354905');
 </script>
-<!-- Event snippet for Ajath.Co.in Thank You Page Jan 2026 conversion page -->
+<?php if ($should_fire_conversion): ?>
+<!-- Event snippet for Ajath.Co.in Thank You Page Jan 2026 conversion page (Verified + Deduplicated) -->
 <script>
-  gtag('event', 'conversion', {'send_to': 'AW-16651354905/ztUQCLz8oegbEJmG_oM-'});
+  (function() {
+    var txnId = <?php echo json_encode($conversion_txn_id); ?>;
+    var storageKey = 'ajath_conv_fired_' + txnId;
+    try {
+      if (txnId && !sessionStorage.getItem(storageKey)) {
+        sessionStorage.setItem(storageKey, '1');
+        gtag('event', 'conversion', {
+          'send_to': 'AW-16651354905/ztUQCLz8oegbEJmG_oM-',
+          'transaction_id': txnId
+        });
+        if (window.oaiq) {
+          oaiq("measure", "lead_created", { type: "customer_action", transaction_id: txnId });
+        }
+      }
+    } catch (e) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-16651354905/ztUQCLz8oegbEJmG_oM-',
+        'transaction_id': txnId
+      });
+    }
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  })();
 </script>
-
-<!-- OpenAI Ads Conversion Event -->
-<script>
-  if (window.oaiq) {
-    oaiq("measure", "lead_created", { type: "customer_action" });
-  }
-</script>
+<?php endif; ?>
 </head>
 
 <body class="apbc-body" data-spy="scroll" data-target=".apbc-nav-menu" data-offset="80">
