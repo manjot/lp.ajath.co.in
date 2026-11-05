@@ -65,9 +65,9 @@ if (
     exit;
 }
 
-// 7. Validate Project Message (at least 15 chars, not single-char spam)
-if (mb_strlen($message) < 15 || preg_match('/^(.)\1{6,}$/u', $message)) {
-    echo json_encode(['success' => false, 'message' => 'Please briefly describe your mobile app requirements (at least 15 characters).']);
+// 7. Validate Project Message (at least 1 non-whitespace character)
+if (mb_strlen($message) < 1) {
+    echo json_encode(['success' => false, 'message' => 'Please enter your project requirements.']);
     exit;
 }
 

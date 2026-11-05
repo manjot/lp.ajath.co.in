@@ -306,8 +306,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 <div>
 <label for="consultation-message" class="block font-label-sm text-label-sm mb-0.5 text-on-surface">Project Requirements *</label>
-<textarea id="consultation-message" name="message" rows="2" required minlength="15" aria-errormessage="message-error" class="w-full px-3.5 py-2 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="Briefly describe your project or what you're looking to build (min. 15 characters)…"></textarea>
-<div id="message-error" class="error-msg"><span aria-hidden="true">❌</span> Please describe your project requirements (at least 15 characters).</div>
+<textarea id="consultation-message" name="message" rows="2" required minlength="1" aria-errormessage="message-error" class="w-full px-3.5 py-2 rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary focus:outline-none bg-surface transition-all" placeholder="Briefly describe your project or what you're looking to build…"></textarea>
+<div id="message-error" class="error-msg"><span aria-hidden="true">❌</span> Please enter your project requirements.</div>
 </div>
 <div id="form-message" role="status" aria-live="polite" class="hidden text-sm p-3 rounded-lg font-semibold text-center transition-all duration-300"></div>
 <button id="submit-btn" class="w-full py-3 primary-gradient text-on-primary rounded-lg font-bold hover:shadow-2xl transition-all active:scale-[0.98]" type="submit">Claim My Free Strategy Session</button>
@@ -1011,8 +1011,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }
                 if (target === messageInput && messageInput) {
                     const msg = messageInput.value.trim();
-                    if (msg && (msg.length < 15 || /^(.)\1{6,}$/u.test(msg))) {
-                        messageInput.setCustomValidity('Please briefly describe your project requirements (at least 15 characters).');
+                    if (!msg) {
+                        messageInput.setCustomValidity('Please enter your project requirements.');
                     } else {
                         messageInput.setCustomValidity('');
                     }
