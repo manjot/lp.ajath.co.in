@@ -19,55 +19,56 @@ if ($honeypot !== '') {
 $name = isset($_POST['name']) ? trim(strip_tags($_POST['name'])) : '';
 $email = isset($_POST['email']) ? trim(strip_tags($_POST['email'])) : '';
 $phone = isset($_POST['phone']) ? trim(strip_tags($_POST['phone'])) : '';
-$budget = isset($_POST['budget']) ? trim(strip_tags($_POST['budget'])) : '';
-$message = isset($_POST['message']) ? trim(strip_tags($_POST['message'])) : '';
+$budget = isset($_POST['budget']) && trim($_POST['budget']) !== '' ? trim(strip_tags($_POST['budget'])) : 'Android & iOS Mobile App';
+$message = isset($_POST['message']) && trim($_POST['message']) !== '' ? trim(strip_tags($_POST['message'])) : 'Requested Free App Cost Estimate & Callback';
 
-// 3. Require all fields including Budget and Project Message
-if (empty($name) || empty($email) || empty($phone) || empty($budget) || empty($message)) {
-    echo json_encode(['success' => false, 'message' => 'Please complete all required fields, including your budget range and project details.']);
+// Log every incoming submission attempt to leads_captured.jsonl for 100% visibility
+$log_entry = json_encode([
+    'timestamp' => gmdate('Y-m-d\TH:i:s\Z'),
+    'ip' => $_SERVER['REMOTE_ADDR'] ?? '',
+    'ua' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+    'name' => $name,
+    'phone' => $phone,
+    'email' => $email,
+    'app_type' => $budget,
+    'message' => $message
+]) . "\n";
+@file_put_contents(__DIR__ . '/leads_captured.jsonl', $log_entry, FILE_APPEND);
+
+// 3. Require Name, Email, and Phone
+if (empty($name) || empty($email) || empty($phone)) {
+    echo json_encode(['success' => false, 'message' => 'Please enter your name, phone number, and email address.']);
     exit;
 }
 
-// 4. Validate Name (at least 3 chars, must contain letters)
-if (mb_strlen($name) < 3 || !preg_match('/[\p{L}]/u', $name)) {
-    echo json_encode(['success' => false, 'message' => 'Please enter your full name.']);
+// 4. Validate Name (at least 2 chars, must contain letters)
+if (mb_strlen($name) < 2 || !preg_match('/[\p{L}]/u', $name)) {
+    echo json_encode(['success' => false, 'message' => 'Please enter your name.']);
     exit;
 }
 
-// 5. Validate Email format & block obvious gibberish/throwaway patterns (e.g. vj2222333@gmail.com)
+// 5. Validate Email format
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['success' => false, 'message' => 'Please enter a valid business email address.']);
+    echo json_encode(['success' => false, 'message' => 'Please enter a valid email address.']);
     exit;
 }
 $emailParts = explode('@', strtolower($email));
 $localPart = $emailParts[0] ?? '';
-$domainPart = $emailParts[1] ?? '';
-$blockedLocalPrefixes = ['test', 'testing', 'example', 'asdf', 'qwerty', 'demo', 'fake', 'none', 'null', 'admin'];
-if (
-    in_array($localPart, $blockedLocalPrefixes, true) ||
-    preg_match('/(.)\1{3,}/', $localPart) || // 4+ identical consecutive chars/digits like vj2222333
-    preg_match('/^[0-9]+$/', $localPart)
-) {
-    echo json_encode(['success' => false, 'message' => 'Please enter an active corporate or personal email address (avoid placeholder addresses).']);
+$blockedLocalPrefixes = ['test', 'testing', 'example', 'asdf', 'qwerty', 'demo', 'fake', 'none', 'null'];
+if (in_array($localPart, $blockedLocalPrefixes, true)) {
+    echo json_encode(['success' => false, 'message' => 'Please enter an active email address.']);
     exit;
 }
 
-// 6. Validate Phone Number (10 to 15 digits, not repeating dummy digits)
+// 6. Validate Phone Number (10 to 15 digits)
 $digitsOnly = preg_replace('/\D+/', '', $phone);
 if (
     strlen($digitsOnly) < 10 ||
     strlen($digitsOnly) > 15 ||
-    preg_match('/^(\d)\1{7,}$/', $digitsOnly) ||
-    strpos($digitsOnly, '12345678') !== false ||
+    preg_match('/^(\d)\1{8,}$/', $digitsOnly) ||
     strpos($digitsOnly, '00000000') !== false
 ) {
-    echo json_encode(['success' => false, 'message' => 'Please enter a valid reachable 10-digit phone number.']);
-    exit;
-}
-
-// 7. Validate Project Message (at least 1 non-whitespace character)
-if (mb_strlen($message) < 1) {
-    echo json_encode(['success' => false, 'message' => 'Please enter your project requirements.']);
+    echo json_encode(['success' => false, 'message' => 'Please enter a valid 10-digit phone number.']);
     exit;
 }
 
